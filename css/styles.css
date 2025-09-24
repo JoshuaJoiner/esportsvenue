@@ -1,305 +1,86 @@
-/* General styling */
-body {
-  font-family: 'Roboto', 'Segoe UI', Tahoma, 'Helvetica Neue', sans-serif; /* Adding more fallbacks for sans-serif */
-  background-color: #eac3a6; /* Peachy salmon color */
-  margin: 0;
-  padding: 0;
+:root{
+  --bg:#0f1724;
+  --card:#0b1220;
+  --accent:#6ee7b7;
+  --muted:#9aa6b2;
+  --glass: rgba(255,255,255,0.03);
+  --gap:12px;
+  --radius:10px;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  background:linear-gradient(180deg,#071026 0%, #071625 100%);
+  color:#e6eef6;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  padding-bottom:40px;
 }
 
-/* Header section with gradient */
-.header {
-  background: linear-gradient(to right, #b0470b, #ad233e); /* Orange to pink gradient */
-  padding: 15px;
-  position: relative;
+/* Top bar */
+.topbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:12px;
+  gap:16px;
+  position:sticky;
+  top:0;
+  background:rgba(4,8,15,0.6);
+  backdrop-filter: blur(4px);
+  border-bottom:1px solid rgba(255,255,255,0.03);
+}
+.brand{display:flex;align-items:center;gap:10px}
+.logo{width:36px;height:36px;object-fit:contain}
+.brand h1{font-size:1rem;margin:0}
+.nav{display:flex;gap:8px}
+.nav-btn{
+  background:transparent;border:1px solid rgba(255,255,255,0.04);
+  padding:8px 10px;border-radius:8px;color:var(--muted);cursor:pointer
+}
+.nav-btn.active{background:var(--accent);color:#042017;border:none}
+
+/* Container */
+.container{max-width:1100px;margin:18px auto;padding:12px}
+
+/* Cards */
+.cards{display:flex;gap:12px;flex-direction:column}
+.card{background:var(--card);padding:12px;border-radius:10px;box-shadow:0 6px 18px rgba(2,6,12,0.6)}
+.card h3{margin:0 0 6px 0}
+.panel{margin-top:12px;background:var(--glass);padding:10px;border-radius:10px}
+
+/* Scheduler / seating layout */
+.scheduler{display:flex;gap:12px;flex-direction:column}
+.pool,.calendar{background:var(--card);padding:10px;border-radius:10px}
+.draggable-list{min-height:120px;padding:8px;border-radius:8px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01))}
+.slot, .team-item, .seat{padding:8px;margin:6px;border-radius:8px;background:rgba(255,255,255,0.03);cursor:grab}
+.slot{min-height:70px;border:1px dashed rgba(255,255,255,0.03)}
+
+/* Seating map */
+.seating-area{display:flex;gap:12px;flex-direction:column}
+.seating-controls{background:var(--card);padding:10px;border-radius:10px}
+.map{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding:10px;border-radius:10px;display:grid;grid-template-columns:repeat(10, 1fr);gap:6px}
+.seat{height:36px;display:flex;align-items:center;justify-content:center;font-size:0.85rem}
+
+/* Charts */
+.charts{display:flex;gap:12px;flex-direction:column}
+.chart-card{background:var(--card);padding:10px;border-radius:10px}
+
+/* Buttons */
+.btn{background:var(--accent);border:none;padding:8px 10px;border-radius:8px;color:#042017;cursor:pointer}
+
+/* Utilities */
+.hidden{display:none}
+.hint{color:var(--muted);font-size:0.9rem}
+
+/* Responsive layout adjustments */
+@media(min-width:800px){
+  .cards{flex-direction:row}
+  .scheduler{flex-direction:row}
+  .seating-area{flex-direction:row}
+  .charts{flex-direction:row}
+  .map{grid-template-columns:repeat(20, 1fr)}
 }
 
-/* Navbar styling */
-.navbar .container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-}
-
-.navbar h1 {
-  color: white;
-  text-align: center;
-  flex: 1;
-  font-family: 'Roboto', 'Segoe UI', Tahoma, 'Helvetica Neue', sans-serif; /* Font stack */
-}
-
-.hamburger {
-  background: none;
-  border: none;
-  font-size: 24px;
-  cursor: pointer;
-  color: white;
-  margin-right: 20px;
-  font-family: 'Roboto', 'Segoe UI', Tahoma, 'Helvetica Neue', sans-serif;
-}
-
-.signup-btn {
-  color: white;
-  background-color: #b0470b; /* Darker button color for contrast */
-  border: none;
-  padding: 8px 16px;
-  border-radius: 4px;
-  text-decoration: none;
-  margin-left: auto;
-  font-family: 'Roboto', 'Segoe UI', Tahoma, 'Helvetica Neue', sans-serif;
-}
-
-.signup-btn:hover {
-  background-color: #FF3B1F;
-}
-
-/* Dropdown Menu */
-.dropdown-menu {
-  display: none;
-  position: absolute;
-  top: 55px;
-  left: 0;
-  width: 150px;
-  background-color: #b67d6a;
-  border-radius: 5px;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.dropdown-menu a {
-  display: block;
-  padding: 10px;
-  color: white;
-  text-decoration: none;
-  font-family: 'Roboto', 'Segoe UI', Tahoma, 'Helvetica Neue', sans-serif;
-}
-
-.dropdown-menu a:hover {
-  background-color: #FFB07C;
-}
-
-/* Reviews section */
-.reviews {
-  text-align: center;
-  margin: 20px auto;
-  max-width: 80%; /* Adjust width if needed */
-  font-family: 'Roboto', 'Segoe UI', Tahoma, 'Helvetica Neue', sans-serif;
-}
-
-/* Slideshow styling */
-.slideshow-container {
-  position: relative;
-  max-width: 600px;
-  margin: auto;
-}
-
-.slideshow-container {
-  text-align: center; /* Center the slideshow */
-}
-
-.slide {
-  display: none;
-}
-
-.slide img {
-  width: 100px;
-  border-radius: 50%;
-}
-
-.prev, .next {
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  width: auto;
-  padding: 10px;
-  background-color: transparent; /* Transparent background */
-  color: #000000; /* Matching arrow color */
-  font-weight: bold;
-  font-size: 24px;
-  user-select: none;
-  font-family: 'Roboto', 'Segoe UI', Tahoma, 'Helvetica Neue', sans-serif;
-}
-
-.prev {
-  left: -40px; /* Adjust position as needed to bring it closer to the reviews */
-}
-
-.next {
-  right: -40px; /* Adjust position as needed to bring it closer to the reviews */
-}
-
-/* Footer section */
-.footer {
-  background: linear-gradient(to right, #b0470b, #ad233e); /* Orange to pink gradient */
-  padding: 20px;
-  text-align: center;
-  color: white;
-  font-family: 'Roboto', 'Segoe UI', Tahoma, 'Helvetica Neue', sans-serif;
-
-}
-
-.download-links img {
-  width: 120px;
-  margin: 5px;
-}
-
-.social-links img {
-  width: 30px;
-  margin: 0 10px;
-}
-
-.footer-menu details {
-  margin: 10px 0;
-}
-
-.footer-menu details summary {
-  font-weight: bold;
-  cursor: pointer;
-  margin-bottom: 5px;
-  color: white;
-  font-family: 'Roboto', 'Segoe UI', Tahoma, 'Helvetica Neue', sans-serif;
-}
-
-.footer-menu a {
-  display: block;
-  color: #555;
-  text-decoration: none;
-  margin: 5px 0;
-  font-family: 'Roboto', 'Segoe UI', Tahoma, 'Helvetica Neue', sans-serif;
-}
-
-.signup-container {
-  padding: 0px 20px 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 80vh;
-}
-
-.form-wrapper {
-  background: white;
-  padding: 30px 30px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(116, 74, 70, 0.878);
-  width: 100%;
-  max-width: 400px;
-  text-align: center;
-}
-
-h1 {
-  font-size: 2em;
-  margin-bottom: 1px;
-  text-align: center;
-}
-
-p {
-  margin-bottom: 20px;
-  color: #555;
-}
-
-.signup-form .form-group {
-  margin-bottom: 15px;
-  text-align: left;
-}
-
-.signup-form label {
-  display: block;
-  font-weight: bold;
-  margin-bottom: 5px;
-  color: #333;
-}
-
-.signup-form input,
-.signup-form select {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  font-size: 1em;
-}
-
-.signup-form input:focus,
-.signup-form select:focus {
-  outline: none;
-  border-color: #3d0a1e;
-}
-
-.signup-form .btn-submit {
-  background-color: rgb(92, 48, 55);
-  color: white;
-  padding: 10px 15px;
-  border: none;
-  border-radius: 5px;
-  font-size: 1em;
-  cursor: pointer;
-}
-
-.signup-form .btn-submit:hover {
-  background-color: #b67d6a;
-  color: #b0470b;
-}
-
-/* Mobile-first styles - Default for smaller devices */
-
-/* Tablet and desktop breakpoints */
-@media (min-width: 600px) {
-  #registration-page .form-container {
-    padding: 30px 40px;
-  }
-}
-
-/* Large devices (laptops/desktops) */
-@media (min-width: 1024px) {
-  #registration-page .form-container {
-    padding: 40px 50px;
-    max-width: 600px;
-  }
-}
-
-/* Mobile-first styles - Default for smaller devices */
-
-/* Tablet and desktop breakpoints */
-@media (min-width: 600px) {
-  .navbar .container {
-    flex-wrap: nowrap;
-    justify-content: space-between;
-  }
-
-  .navbar h1 {
-    text-align: left;
-  }
-
-  .signup-btn {
-    margin-left: 20px;
-  }
-
-  .reviews {
-    max-width: 90%;
-  }
-
-  .footer {
-    padding: 30px;
-  }
-}
-
-/* Large devices (laptops/desktops) */
-@media (min-width: 1024px) {
-  .navbar .container {
-    justify-content: flex-start;
-  }
-
-  .navbar h1 {
-    font-size: 2rem;
-  }
-
-  .slideshow-container {
-    max-width: 800px;
-  }
-
-  .footer {
-    padding: 40px;
-  }
-
-  .footer-menu a {
-    font-size: 1rem;
-  }
-}
