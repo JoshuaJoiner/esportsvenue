@@ -178,3 +178,39 @@ footer {
   color: #000; /* Black text */
 }
 
+.venues {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  gap: 20px;
+}
+
+.venue-card {
+  background: #f9f9f9;
+  border-radius: 10px;
+  padding: 20px;
+  width: 280px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease;
+}
+
+.venue-card:hover {
+  transform: translateY(-5px);
+}
+
+.venue-img {
+  width: 150px;
+  height: auto;
+  margin: 15px 0;
+  border-radius: 8px;
+}
+
+.venue-card h3 {
+  color: #000;
+}
+
+.venue-card p {
+  color: #000;
+}
