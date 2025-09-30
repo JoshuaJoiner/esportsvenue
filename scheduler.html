@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Scheduler - Esports Venue</title>
-  <link rel="stylesheet" href="css/styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scheduler - Esports Venue</title>
+<link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 <header>
@@ -14,13 +14,63 @@
   <a href="analytics.html">Analytics</a>
 </header>
 <main>
-  <h2>Match Scheduler</h2>
-  <div class="scheduler">
-    <div class="draggable-list" id="team-pool" aria-label="Team pool"></div>
-    <div class="slots" id="slots" aria-label="Schedule slots"></div>
-  </div>
-  <p>Drag teams into slots to schedule matches.</p>
+<h2>Match Scheduler</h2>
+<div class="scheduler">
+  <div class="draggable-list" id="team-pool"></div>
+  <div class="slots" id="slots"></div>
+</div>
+<p>Drag teams into slots to schedule matches. Your schedule is saved automatically.</p>
 </main>
-<script src="js/scheduler.js"></script>
+<script>
+const teams = ['Apex Lions','Blue Circuit','Crimson Fox','DuneRiders','Echo Clan','Frostbyte'];
+const teamPool = document.getElementById('team-pool');
+const slots = document.getElementById('slots');
+
+// Populate team pool
+teams.forEach(t=>{
+  const el=document.createElement('div');
+  el.className='draggable-item';
+  el.textContent=t;
+  el.draggable=true;
+  el.addEventListener('dragstart', ev=>ev.dataTransfer.setData('text/plain', t));
+  teamPool.appendChild(el);
+});
+
+// Populate slots
+for(let i=0;i<6;i++){
+  const slot=document.createElement('div');
+  slot.className='slot';
+  slot.dataset.index=i;
+  slot.innerHTML=`<strong>Slot ${i+1}</strong>`;
+  slot.addEventListener('dragover', ev=>ev.preventDefault());
+  slot.addEventListener('drop', ev=>{
+    ev.preventDefault();
+    const teamName=ev.dataTransfer.getData('text/plain');
+    slot.innerHTML=`<strong>Slot ${i+1}</strong> <div>${teamName}</div>`;
+    saveSchedule();
+  });
+  slots.appendChild(slot);
+}
+
+// Save schedule to localStorage
+function saveSchedule(){
+  const schedule=[];
+  document.querySelectorAll('.slot').forEach(slot=>{
+    const team=slot.querySelector('div')?.textContent||null;
+    schedule.push(team);
+  });
+  localStorage.setItem('esportsSchedule', JSON.stringify(schedule));
+}
+
+// Load schedule from localStorage
+function loadSchedule(){
+  const schedule=JSON.parse(localStorage.getItem('esportsSchedule')||'[]');
+  document.querySelectorAll('.slot').forEach((slot,i)=>{
+    if(schedule[i]) slot.innerHTML=`<strong>Slot ${i+1}</strong> <div>${schedule[i]}</div>`;
+  });
+}
+loadSchedule();
+</script>
 </body>
 </html>
+
