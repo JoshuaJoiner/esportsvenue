@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us - ArenaHub</title>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<header>
+  <a href="index.html">Home</a> | 
+  <a href="scheduler.html">Scheduler</a> | 
+  <a href="seating.html">Seating Map</a> | 
+  <a href="analytics.html">Analytics</a> | 
+  <a href="about.html">About</a>
+</header>
+
+<main>
+  <section class="about">
+    <h2>About ArenaHub</h2>
+    <p>
+      At <strong>ArenaHub</strong>, we believe esports events should feel effortless for organizers 
+      and unforgettable for fans. We built this platform to bring everyone together in one place — 
+      the organizers who plan, the fans who cheer, and the teams and coaches who compete.
+    </p>
+    <p>
+      For organizers, ArenaHub takes the stress out of managing an event. Seating charts, ticket 
+      sales, schedules, and brackets can all be handled in one simple system. Fans get more than 
+      just a ticket to a match — they get access to real-time stats, interactive screens, and an 
+      experience that makes them feel part of the action. Teams and coaches can focus on performance, 
+      knowing they have the tools to stay organized and connected throughout the competition.
+    </p>
+    <p>
+      Esports is about community, excitement, and shared energy. ArenaHub exists to capture that 
+      spirit and make every event a place where players, fans, and organizers come together to create 
+      something unforgettable.
+    </p>
+  </section>
+
+  <section class="contact">
+    <h2>Contact Us</h2>
+    <form id="contactForm">
+      <label for="name">Name:</label><br>
+      <input type="text" id="name" name="name" required><br><br>
+
+      <label for="email">Email:</label><br>
+      <input type="email" id="email" name="email" required><br><br>
+
+      <label for="message">Message:</label><br>
+      <textarea id="message" name="message" rows="5" required></textarea><br><br>
+
+      <button type="submit">Send Message</button>
+    </form>
+    <p id="formStatus"></p>
+  </section>
+</main>
+
+<footer>
+  <p>&copy; 2025 ArenaHub. All rights reserved. | <a href="about.html">About</a></p>
+</footer>
+
+<script>
+// Simple form feedback
+document.getElementById("contactForm").addEventListener("submit", function(e){
+  e.preventDefault();
+  document.getElementById("formStatus").textContent = "✅ Thank you! Your message has been received.";
+  this.reset();
+});
+</script>
+</body>
+</html>
