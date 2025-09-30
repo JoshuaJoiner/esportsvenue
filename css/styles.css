@@ -156,3 +156,25 @@ footer {
   color: #000; /* Black text for plan titles and descriptions */
 }
 
+
+.graphs, .match-outcomes, .analytics {
+  margin: 30px 0;
+}
+
+.outcomes-grid, .analytics-grid {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.outcome-box, .analytics-box {
+  background: #f9f9f9;
+  padding: 20px;
+  border-radius: 10px;
+  width: 220px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  color: #000; /* Black text */
+}
+
