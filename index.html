@@ -1,112 +1,27 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Esports Venue Dashboard — Prototype</title>
-  <link rel="stylesheet" href="css/styles.css" />
-  <!-- Chart.js for simple analytics -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Esports Venue Prototype</title>
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <header class="topbar">
-    <div class="brand">
-      <img src="images/logo.png" alt="" class="logo" />
-      <h1>VenueManager</h1>
-    </div>
-    <nav class="nav">
-      <button id="nav-dashboard" class="nav-btn active">Dashboard</button>
-      <button id="nav-schedule" class="nav-btn">Scheduler</button>
-      <button id="nav-seating" class="nav-btn">Seating Map</button>
-      <button id="nav-analytics" class="nav-btn">Analytics</button>
-    </nav>
-  </header>
-
-  <main id="app" class="container">
-    <!-- Dashboard Screen -->
-    <section id="screen-dashboard" class="screen">
-      <h2>Quick Overview</h2>
-      <div class="cards">
-        <div class="card">
-          <h3>Next Match</h3>
-          <p id="next-match">No match scheduled</p>
-        </div>
-        <div class="card">
-          <h3>Occupancy</h3>
-          <p id="occupancy">0 / 500</p>
-        </div>
-        <div class="card">
-          <h3>Active Streams</h3>
-          <p id="streams">0</p>
-        </div>
-      </div>
-
-      <div class="panel">
-        <h3>Live Controls</h3>
-        <div class="panel-row">
-          <button id="btn-reset" class="btn">Reset Demo</button>
-        </div>
-      </div>
-    </section>
-
-    <!-- Scheduler Screen -->
-    <section id="screen-schedule" class="screen hidden">
-      <h2>Match Scheduler</h2>
-      <div class="scheduler">
-        <div class="pool">
-          <h4>Teams / Matches</h4>
-          <div id="team-pool" class="draggable-list" aria-label="Team pool">
-            <!-- items filled by JS -->
-          </div>
-        </div>
-
-        <div class="calendar">
-          <h4>Slots</h4>
-          <div id="slots" class="slots" aria-label="Schedule slots">
-            <!-- slots filled by JS -->
-          </div>
-        </div>
-      </div>
-      <p class="hint">Drag teams into time slots to schedule.</p>
-    </section>
-
-    <!-- Seating Screen -->
-    <section id="screen-seating" class="screen hidden">
-      <h2>Seating Map</h2>
-      <div class="seating-area">
-        <aside class="seating-controls">
-          <h4>Attendees</h4>
-          <div id="attendee-pool" class="draggable-list"></div>
-          <button id="auto-fill" class="btn">Auto-Fill Seats</button>
-        </aside>
-
-        <div class="map" id="seating-map" aria-label="Seating map">
-          <!-- grid seats created by JS -->
-        </div>
-      </div>
-      <p class="hint">Drag attendees onto seats. Use Auto-Fill for demo seating.</p>
-    </section>
-
-    <!-- Analytics Screen -->
-    <section id="screen-analytics" class="screen hidden">
-      <h2>Analytics Snapshot</h2>
-      <div class="charts">
-        <div class="chart-card">
-          <canvas id="attendanceChart" width="400" height="200" aria-label="Attendance chart"></canvas>
-          <p class="chart-label">Attendance (past 7 days)</p>
-        </div>
-        <div class="chart-card">
-          <canvas id="sponsorChart" width="400" height="200" aria-label="Sponsor impressions chart"></canvas>
-          <p class="chart-label">Sponsor visibility</p>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <small>Prototype — For class project. Data is demo-only.</small>
-  </footer>
-
-  <script src="js/app.js"></script>
+<header>
+  <a href="index.html">Home</a> | 
+  <a href="scheduler.html">Scheduler</a> | 
+  <a href="seating.html">Seating Map</a> | 
+  <a href="analytics.html">Analytics</a>
+</header>
+<main>
+  <h1>Welcome to Esports Venue Prototype</h1>
+  <p>This prototype demonstrates three core modules:</p>
+  <ul>
+    <li><a href="scheduler.html">Match Scheduler</a></li>
+    <li><a href="seating.html">Seating Map</a></li>
+    <li><a href="analytics.html">Analytics Dashboard</a></li>
+  </ul>
+  <p>Click a module to interact with the prototype.</p>
+</main>
 </body>
 </html>
