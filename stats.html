@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ArenaHub - Stats</title>
+  <title>ArenaHub - Team Stats</title>
   <link rel="stylesheet" href="css/styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- For graphs -->
 </head>
 <body>
 <header>
@@ -16,17 +17,72 @@
 </header>
 
 <main>
-  <h2>Real-Time Event Stats</h2>
-  <p>Track player performance, match outcomes, and live audience engagement in one place.</p>
-  <div class="stats-container">
-    <div class="stat-box">🔥 Live Viewers: 10,200</div>
-    <div class="stat-box">🎯 Top Player: ShadowX</div>
-    <div class="stat-box">🏆 Last Winner: Team Alpha</div>
-  </div>
+  <h2>Team Stats</h2>
+  <p>
+    Stay connected to your favorite teams with real-time stats, player insights, 
+    and upcoming matches—all in one place. Designed to keep fans engaged, 
+    this hub turns raw data into an interactive experience.
+  </p>
+
+  <!-- Player Performance Graphs -->
+  <section class="graphs">
+    <h3>Player Performance</h3>
+    <canvas id="playerPerformanceChart" width="400" height="200"></canvas>
+  </section>
+
+  <!-- Match Outcomes Boxes -->
+  <section class="match-outcomes">
+    <h3>Match Outcomes</h3>
+    <div class="outcomes-grid">
+      <div class="outcome-box">Team Alpha 3 - 1 Team Beta</div>
+      <div class="outcome-box">Team Gamma 2 - 2 Team Delta</div>
+      <div class="outcome-box">Team Epsilon 0 - 3 Team Zeta</div>
+    </div>
+  </section>
+
+  <!-- Live Audience Analytics -->
+  <section class="analytics">
+    <h3>Live Audience Engagement</h3>
+    <div class="analytics-grid">
+      <div class="analytics-box">🔥 Live Viewers: 10,200</div>
+      <div class="analytics-box">💬 Chat Messages: 3,450</div>
+      <div class="analytics-box">👍 Reactions: 1,200</div>
+    </div>
+  </section>
 </main>
 
 <footer>
-  <p>&copy; 2025 ArenaHub</p>
+  <p>&copy; 2025 ArenaHub | <a href="about.html">About</a></p>
 </footer>
+
+<!-- Chart.js Script -->
+<script>
+  const ctx = document.getElementById('playerPerformanceChart').getContext('2d');
+  const playerPerformanceChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['Player 1', 'Player 2', 'Player 3', 'Player 4', 'Player 5'],
+      datasets: [{
+        label: 'Kills per Match',
+        data: [12, 9, 15, 7, 10],
+        backgroundColor: 'rgba(0, 119, 204, 0.6)'
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { display: false },
+        title: {
+          display: true,
+          text: 'Mock Player Performance'
+        }
+      },
+      scales: {
+        y: { beginAtZero: true }
+      }
+    }
+  });
+</script>
 </body>
 </html>
+
