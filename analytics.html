@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Analytics - Esports Venue</title>
-  <link rel="stylesheet" href="css/styles.css">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Analytics - Esports Venue</title>
+<link rel="stylesheet" href="css/styles.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 <header>
@@ -15,12 +15,36 @@
   <a href="analytics.html">Analytics</a>
 </header>
 <main>
-  <h2>Analytics Snapshot</h2>
-  <div class="charts">
-    <canvas id="attendanceChart" width="400" height="200"></canvas>
-    <canvas id="sponsorChart" width="400" height="200"></canvas>
-  </div>
+<h2>Analytics Snapshot</h2>
+<div class="charts">
+  <canvas id="attendanceChart" width="400" height="200"></canvas>
+  <canvas id="sponsorChart" width="400" height="200"></canvas>
+</div>
 </main>
-<script src="js/analytics.js"></script>
+<script>
+const seating=JSON.parse(localStorage.getItem('esportsSeating')||'[]');
+const attendeesCount=seating.filter(s=>s && s!=='Empty').length;
+
+// Attendance line chart
+const ctx=document.getElementById('attendanceChart').getContext('2d');
+new Chart(ctx,{
+  type:'line',
+  data:{
+    labels:['-6d','-5d','-4d','-3d','-2d','-1d','Today'],
+    datasets:[{label:'Attendance', data:[120,230,180,300,250,400,attendeesCount], fill:true, tension:0.4}]
+  }
+});
+
+// Sponsor bar chart (example: impressions based on teams scheduled)
+const schedule=JSON.parse(localStorage.getItem('esportsSchedule')||'[]');
+const sponsorImpressions=[4000,2600,1800,900].map(x=>x + schedule.filter(t=>t).length*50);
+
+const ctx2=document.getElementById('sponsorChart').getContext('2d');
+new Chart(ctx2,{
+  type:'bar',
+  data:{labels:['Main','Stage','HUD','Kiosk'], datasets:[{label:'Impressions', data:sponsorImpressions}]}
+});
+</script>
 </body>
 </html>
+
