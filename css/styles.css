@@ -7,3 +7,26 @@ main { padding: 12px; max-width: 1000px; margin: auto; }
 .map { display: grid; grid-template-columns: repeat(10, 1fr); gap: 6px; }
 button { padding: 8px 12px; border: none; border-radius: 6px; cursor: pointer; background: #6ee7b7; color: #042017; margin-top: 6px; }
 
+/* Contact Section Layout */
+.contact-container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.contact form {
+  flex: 1;
+}
+
+.logo-box {
+  flex: 0 0 200px;
+  text-align: center;
+}
+
+.logo-box img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
