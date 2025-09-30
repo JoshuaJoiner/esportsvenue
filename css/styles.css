@@ -102,6 +102,11 @@ button { padding: 8px 12px; border: none; border-radius: 6px; cursor: pointer; b
   color: #333;
 }
 
+.feedback-box p {
+  color: #000; /* Black text for feedback */
+}
+
+
 /* Footer */
 footer {
   margin-top: 40px;
