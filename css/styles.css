@@ -1,86 +1,9 @@
-:root{
-  --bg:#0f1724;
-  --card:#0b1220;
-  --accent:#6ee7b7;
-  --muted:#9aa6b2;
-  --glass: rgba(255,255,255,0.03);
-  --gap:12px;
-  --radius:10px;
-  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-}
-*{box-sizing:border-box}
-html,body{height:100%}
-body{
-  margin:0;
-  background:linear-gradient(180deg,#071026 0%, #071625 100%);
-  color:#e6eef6;
-  -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale;
-  padding-bottom:40px;
-}
-
-/* Top bar */
-.topbar{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:12px;
-  gap:16px;
-  position:sticky;
-  top:0;
-  background:rgba(4,8,15,0.6);
-  backdrop-filter: blur(4px);
-  border-bottom:1px solid rgba(255,255,255,0.03);
-}
-.brand{display:flex;align-items:center;gap:10px}
-.logo{width:36px;height:36px;object-fit:contain}
-.brand h1{font-size:1rem;margin:0}
-.nav{display:flex;gap:8px}
-.nav-btn{
-  background:transparent;border:1px solid rgba(255,255,255,0.04);
-  padding:8px 10px;border-radius:8px;color:var(--muted);cursor:pointer
-}
-.nav-btn.active{background:var(--accent);color:#042017;border:none}
-
-/* Container */
-.container{max-width:1100px;margin:18px auto;padding:12px}
-
-/* Cards */
-.cards{display:flex;gap:12px;flex-direction:column}
-.card{background:var(--card);padding:12px;border-radius:10px;box-shadow:0 6px 18px rgba(2,6,12,0.6)}
-.card h3{margin:0 0 6px 0}
-.panel{margin-top:12px;background:var(--glass);padding:10px;border-radius:10px}
-
-/* Scheduler / seating layout */
-.scheduler{display:flex;gap:12px;flex-direction:column}
-.pool,.calendar{background:var(--card);padding:10px;border-radius:10px}
-.draggable-list{min-height:120px;padding:8px;border-radius:8px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01))}
-.slot, .team-item, .seat{padding:8px;margin:6px;border-radius:8px;background:rgba(255,255,255,0.03);cursor:grab}
-.slot{min-height:70px;border:1px dashed rgba(255,255,255,0.03)}
-
-/* Seating map */
-.seating-area{display:flex;gap:12px;flex-direction:column}
-.seating-controls{background:var(--card);padding:10px;border-radius:10px}
-.map{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding:10px;border-radius:10px;display:grid;grid-template-columns:repeat(10, 1fr);gap:6px}
-.seat{height:36px;display:flex;align-items:center;justify-content:center;font-size:0.85rem}
-
-/* Charts */
-.charts{display:flex;gap:12px;flex-direction:column}
-.chart-card{background:var(--card);padding:10px;border-radius:10px}
-
-/* Buttons */
-.btn{background:var(--accent);border:none;padding:8px 10px;border-radius:8px;color:#042017;cursor:pointer}
-
-/* Utilities */
-.hidden{display:none}
-.hint{color:var(--muted);font-size:0.9rem}
-
-/* Responsive layout adjustments */
-@media(min-width:800px){
-  .cards{flex-direction:row}
-  .scheduler{flex-direction:row}
-  .seating-area{flex-direction:row}
-  .charts{flex-direction:row}
-  .map{grid-template-columns:repeat(20, 1fr)}
-}
+body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #0f1724; color: #e6eef6; }
+header { background: #1e293b; padding: 10px; }
+header a { color: #6ee7b7; margin-right: 10px; text-decoration: none; }
+main { padding: 12px; max-width: 1000px; margin: auto; }
+.draggable-list, .slots, .map, .charts { background: #0b1220; padding: 10px; border-radius: 8px; margin-bottom: 12px; min-height: 100px; }
+.draggable-item, .slot, .seat { padding: 6px 8px; margin: 4px; border-radius: 6px; background: rgba(255,255,255,0.05); cursor: grab; }
+.map { display: grid; grid-template-columns: repeat(10, 1fr); gap: 6px; }
+button { padding: 8px 12px; border: none; border-radius: 6px; cursor: pointer; background: #6ee7b7; color: #042017; margin-top: 6px; }
 
