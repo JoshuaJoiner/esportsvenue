@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Seating Map - Esports Venue</title>
-  <link rel="stylesheet" href="css/styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Seating Map - Esports Venue</title>
+<link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 <header>
@@ -14,14 +14,71 @@
   <a href="analytics.html">Analytics</a>
 </header>
 <main>
-  <h2>Seating Map</h2>
-  <div class="seating-area">
-    <div class="draggable-list" id="attendee-pool" aria-label="Attendees"></div>
-    <div class="map" id="seating-map" aria-label="Seating grid"></div>
-  </div>
-  <button id="auto-fill">Auto-Fill Seats</button>
-  <p>Drag attendees onto seats or use Auto-Fill.</p>
+<h2>Seating Map</h2>
+<div class="seating-area">
+  <div class="draggable-list" id="attendee-pool"></div>
+  <div class="map" id="seating-map"></div>
+</div>
+<button id="auto-fill">Auto-Fill Seats</button>
+<p>Drag attendees onto seats or use Auto-Fill. Seating is saved automatically.</p>
 </main>
-<script src="js/seating.js"></script>
+<script>
+let attendees=Array.from({length:40},(_,i)=>`Fan ${i+1}`);
+// Add scheduled teams as VIP attendees
+const schedule=JSON.parse(localStorage.getItem('esportsSchedule')||'[]');
+schedule.forEach(team=>{ if(team) attendees.push(team); });
+
+const attendeePool=document.getElementById('attendee-pool');
+attendees.forEach(a=>{
+  const el=document.createElement('div');
+  el.className='draggable-item';
+  el.textContent=a;
+  el.draggable=true;
+  el.addEventListener('dragstart', ev=>ev.dataTransfer.setData('text/plain', a));
+  attendeePool.appendChild(el);
+});
+
+// Seating grid
+const seatingMap=document.getElementById('seating-map');
+for(let i=0;i<50;i++){
+  const seat=document.createElement('div');
+  seat.className='seat';
+  seat.dataset.index=i;
+  seat.textContent='Empty';
+  seat.addEventListener('dragover', ev=>ev.preventDefault());
+  seat.addEventListener('drop', ev=>{
+    ev.preventDefault();
+    seat.textContent=ev.dataTransfer.getData('text/plain');
+    saveSeating();
+  });
+  seatingMap.appendChild(seat);
+}
+
+// Auto-fill
+document.getElementById('auto-fill').addEventListener('click', ()=>{
+  const seats=Array.from(document.querySelectorAll('.seat'));
+  seats.forEach((seat,i)=>{ if(i<attendees.length) seat.textContent=attendees[i]; });
+  saveSeating();
+});
+
+// Save seating
+function saveSeating(){
+  const seating=[];
+  document.querySelectorAll('.seat').forEach(seat=>{
+    seating.push(seat.textContent);
+  });
+  localStorage.setItem('esportsSeating', JSON.stringify(seating));
+}
+
+// Load seating
+function loadSeating(){
+  const seating=JSON.parse(localStorage.getItem('esportsSeating')||'[]');
+  document.querySelectorAll('.seat').forEach((seat,i)=>{
+    if(seating[i]) seat.textContent=seating[i];
+  });
+}
+loadSeating();
+</script>
 </body>
 </html>
+
