@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Seating Map - Esports Venue</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<header>
+  <a href="index.html">Home</a> | 
+  <a href="scheduler.html">Scheduler</a> | 
+  <a href="seating.html">Seating Map</a> | 
+  <a href="analytics.html">Analytics</a>
+</header>
+<main>
+  <h2>Seating Map</h2>
+  <div class="seating-area">
+    <div class="draggable-list" id="attendee-pool" aria-label="Attendees"></div>
+    <div class="map" id="seating-map" aria-label="Seating grid"></div>
+  </div>
+  <button id="auto-fill">Auto-Fill Seats</button>
+  <p>Drag attendees onto seats or use Auto-Fill.</p>
+</main>
+<script src="js/seating.js"></script>
+</body>
+</html>
