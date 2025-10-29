@@ -24,34 +24,48 @@
   <h2>Discover the Top Arenas</h2>
   <p>Explore arenas designed for unforgettable esports experiences, from local tournaments to global competitions.</p>
 
-  <section class="venues">
-    <div class="venue-card">
-      <img src="images/open.png" alt="Open-Floor Venue" class="venue-img">
-      <h3>Open-Floor Venue</h3>
-      <p>Flexible space ideal for local tournaments, community events, and casual competitions.</p>
-      <button>Find Location Near You</button>
-    </div>
+  <!-- 3-up row with vertical separators; reuses your .venue-card look -->
+  <section class="venues-row">
+    <article class="venue-col">
+      <div class="venue-card">
+        <img src="images/open.png" alt="Open-Floor Venue" class="venue-img">
+        <h3>Open-Floor Venue</h3>
+        <p>Flexible space ideal for local tournaments, community events, and casual competitions.</p>
+        <button>Find Location Near You</button>
+      </div>
+    </article>
 
-    <div class="venue-card">
-      <img src="images/studio.png" alt="Esports Studio" class="venue-img">
-      <h3>Esports Studio</h3>
-      <p>Professional setup for streaming and small-scale competitive events with high-quality production.</p>
-      <button>Find Location Near You</button>
-    </div>
+    <span class="v-sep" aria-hidden="true"></span>
 
-    <div class="venue-card">
-      <img src="images/purpose.png" alt="Purpose-Built Arena" class="venue-img">
-      <h3>Purpose-Built Arena</h3>
-      <p>Large-scale venues designed to host global tournaments with thousands of spectators.</p>
-      <button>Find Location Near You</button>
-    </div>
+    <article class="venue-col">
+      <div class="venue-card">
+        <img src="images/studio.png" alt="Esports Studio" class="venue-img">
+        <h3>Esports Studio</h3>
+        <p>Professional setup for streaming and small-scale competitive events with high-quality production.</p>
+        <button>Find Location Near You</button>
+      </div>
+    </article>
+
+    <span class="v-sep" aria-hidden="true"></span>
+
+    <article class="venue-col">
+      <div class="venue-card">
+        <img src="images/purpose.png" alt="Purpose-Built Arena" class="venue-img">
+        <h3>Purpose-Built Arena</h3>
+        <p>Large-scale venues designed to host global tournaments with thousands of spectators.</p>
+        <button>Find Location Near You</button>
+      </div>
+    </article>
   </section>
+
+  <!-- shared description line under the row -->
+  <div class="venues-row-notes">
+    From flexible open floors to broadcast-ready studios and full arenas, we’ll match the right venue to your event.
+  </div>
 </main>
 
+
 <footer>
-  <div class="footer-logo">
-    <img src="images/logo.png" alt="ArenaHub Logo">
-  </div>
   <p>&copy; 2025 ArenaHub. All rights reserved.</p>
 </footer>
 </body>
