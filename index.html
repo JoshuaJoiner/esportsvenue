@@ -7,6 +7,7 @@
 <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+
 <header>
   <nav class="navbar">
     <div class="logo">ArenaHub</div>
@@ -20,24 +21,27 @@
   </nav>
 </header>
 
-
 <main>
+
   <!-- Upcoming Events Section -->
   <section class="events">
     <h2>Upcoming Events</h2>
-    <div class="event-grid">
-      <div class="event-card">
-        <img src="images/event1.png" alt="Event 1 Logo">
-        <button>Learn More</button>
-      </div>
-      <div class="event-card">
-        <img src="images/event2.png" alt="Event 2 Logo">
-        <button>Learn More</button>
-      </div>
-      <div class="event-card">
-        <img src="images/event3.png" alt="Event 3 Logo">
-        <button>Learn More</button>
-      </div>
+
+    <!-- Genre Switch Row -->
+    <div class="genre-switch">
+      <button class="genre-btn" id="prevGenre" aria-label="Previous genre">←</button>
+      <span class="genre-label" id="genreLabel">FPS</span>
+      <button class="genre-btn" id="nextGenre" aria-label="Next genre">→</button>
+    </div>
+
+    <!-- Events Spinner - Centered main + side previews -->
+    <div id="spinner" class="spinner"></div>
+
+    <!-- Item rotation arrows -->
+    <div class="spinner-controls">
+      <button class="spin-btn" id="spinPrev" aria-label="Previous event">←</button>
+      <span class="spin-divider">|</span>
+      <button class="spin-btn" id="spinNext" aria-label="Next event">→</button>
     </div>
   </section>
 
@@ -63,11 +67,14 @@
 
 <!-- Footer -->
 <footer>
-  <div class="footer-logo">
-    <img src="images/logo.png" alt="ArenaHub Logo">
-  </div>
   <p>&copy; 2025 ArenaHub. All rights reserved.</p>
 </footer>
+
+<!-- ✅ Spinner + Prototype Logic -->
+<script src="scripts.js"></script>
+
 </body>
 </html>
+
+<script src="js/script.js"></script>
 
