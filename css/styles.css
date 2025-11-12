@@ -470,3 +470,32 @@ button:hover,
     background: rgba(255,255,255,0.12);
   }
 }
+
+.plans {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  gap: 20px;
+}
+
+.plan {
+  background: #f9f9f9;
+  border-radius: 10px;
+  padding: 20px;
+  width: 300px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease;
+}
+
+.plan:hover {
+  transform: translateY(-5px);
+}
+
+.plan-img {
+  width: 150px;
+  height: auto;
+  margin: 15px 0;
+  border-radius: 8px;
+}
