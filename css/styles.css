@@ -499,8 +499,8 @@ button:hover,
   margin: 15px 0;
   border-radius: 8px;
 
+.plan h3,
 .plan p {
-  color: #000; /* Black text for plan titles and descriptions */
+  color: black;
 }
-
 }
